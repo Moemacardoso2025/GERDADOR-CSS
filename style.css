@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('img/logo.jpg');
+    background-image: url('logo.jpg');
     background-size: cover; /* Faz a imagem ocupar a tela toda */
     background-attachment: fixed; /* Mantém o fundo parado ao rolar */
     margin: 0;
@@ -130,4 +130,5 @@ span {
     cursor: pointer;
     font-weight: bold;
     margin-top: 10px;
+
 }

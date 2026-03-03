@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8"><!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Gerador de CSS <span>por IA</span> 📥</h1>
+    <p>Descreva o que você imagina e veja a mágica acontecer!</p>
+
+    <div class="input-container">
+        <label for="input-text">Sua ideia:</label>
+        <textarea rows="3" id="input-text" placeholder="Ex: Um botão neon azul que brilha ao passar o mouse"></textarea>
+    </div>
+
+    <button class="button" id="btn-gerar">Gerar Código</button>
+
+    <div id="preview-section">
+    <h3>Preview do Resultado:</h3>
+    <div id="canvas">
+        <div class="element-to-style"></div>
+    </div>
+</div>
+
+    <div id="result-container" style="display: none;">
+    <h3>Código CSS Gerado:</h3>
+    <pre id="output-css"></pre>
+    <button onclick="copyToClipboard()" class="copy-btn">Copiar Código</button>
+</div>
+
+    <script src="script.js"></script>
+</body>
+     <script src="script.js"></script>
+
+</html>

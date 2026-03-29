@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8"><!-- Define a codificação de caracteres como UTF-8 -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de IA</title>
+    <title>Gerador de IA - CSS</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
     <h1>Gerador de CSS <span>por IA</span> 📥</h1>
     <p>Descreva o que você imagina e veja a mágica acontecer!</p>
 
@@ -20,20 +19,19 @@
     <button class="button" id="btn-gerar">Gerar Código</button>
 
     <div id="preview-section">
-    <h3>Preview do Resultado:</h3>
-    <div id="canvas">
-        <div class="element-to-style"></div>
+        <h3>Preview do Resultado:</h3>
+        <div id="canvas">
+            <div class="element-to-style">Exemplo</div>
+        </div>
     </div>
-</div>
 
     <div id="result-container" style="display: none;">
-    <h3>Código CSS Gerado:</h3>
-    <pre id="output-css"></pre>
-    <button onclick="copyToClipboard()" class="copy-btn">Copiar Código</button>
-</div>
+        <h3>Código CSS Gerado:</h3>
+        <pre id="output-css"></pre>
+        <button id="btn-copiar" onclick="copyToClipboard()" class="copy-btn">Copiar Código</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
-     <script src="script.js"></script>
-
+</html>
 </html>

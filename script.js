@@ -2,7 +2,8 @@ const btnGerar = document.querySelector('.button');
 const inputText = document.querySelector('#input-text');
 
 // ⚠️ Mantenha sua chave aqui
-const API_KEY = "MY KEY"; 
+const API_KEY = "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
+"; 
 
 btnGerar.addEventListener('click', async () => {
     const prompt = inputText.value;

@@ -1,41 +1,65 @@
+/* Importando uma fonte mais moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color:black;
-    background-image: url('logo.jpg');
-    background-size: cover; /* Faz a imagem ocupar a tela toda */
-    background-attachment: fixed; /* Mantém o fundo parado ao rolar */
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0a0a;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('logo.jpg');
+    background-size: cover;
+    background-attachment: fixed;
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza tudo no body */
+    align-items: center;
+    color: white;
 }
 
 h1 {
     color: #3bce67;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+h1 span {
+    color: #9e5ef1;
 }
 
 p {
-    color: #ffffff;
-    line-height: 1.5;
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    max-width: 500px;
 }
 
-span {
-    color: #9e5ef1;
-    font-weight: bold;
-}
-
-/* Container do Textarea */
+/* Container do Textarea com efeito de vidro */
 .input-container {
-    width: 60%;
-    max-width: 600px;
-    padding: 20px;
-    margin: 20px auto;
-    box-sizing: border-box;
-    border: 2px solid #e2d8d8;
-    border-radius: 25px;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para ler melhor */
+    width: 100%;
+    max-width: 650px;
+    padding: 25px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.input-container:focus-within {
+    border-color: #9e5ef1;
+    transform: translateY(-5px);
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #9e5ef1;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
 #input-text {
@@ -45,96 +69,81 @@ span {
     color: white;
     outline: none;
     resize: none;
-    font-family: inherit;
+    font-size: 1.1rem;
     text-align: center;
 }
 
-/* Botão Gerar */
+/* Botão Gerar Principal */
 .button {
-    background-color: #1e169b;
-    color: #f0f0f0;
-    padding: 12px 32px;
-    margin: 20px auto;
+    background: linear-gradient(135deg, #6e45e2 0%, #1e169b 100%);
+    color: white;
+    padding: 15px 40px;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
-    width: 250px;
-    height: 50px;
-    transition: background-color 0.3s ease;
-    display: block;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(30, 22, 155, 0.4);
 }
 
 .button:hover {
-    background-color: #3e8e41;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(110, 69, 226, 0.6);
 }
 
-/* Área de Preview (Canvas) */
+.button:active {
+    transform: scale(0.95);
+}
+
+/* Área de Preview */
 #preview-section {
+    margin-top: 50px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza o título e o canvas */
-}
-
-#preview-section h3 {
-    color: white;
 }
 
 #canvas {
-    width: 80%;
-    max-width: 600px;
-    height: 300px;
-    background-color: rgba(158, 94, 241, 0.3); /* Roxo com transparência */
+    width: 100%;
+    max-width: 650px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(158, 94, 241, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    margin: 20px auto; /* O 'auto' é crucial aqui */
-    overflow: hidden;
+    border-radius: 20px;
+    margin: 20px auto;
+    border: 2px dashed rgba(158, 94, 241, 0.4);
     position: relative;
-    border: 2px dashed #9e5ef1;
 }
 
 .element-to-style {
-    width: 100px;
-    height: 100px;
-    background-color: white; /* Cor padrão inicial */
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.5s ease; /* Transição suave para quando o CSS mudar */
 }
 
-/* Container de Resultado (Código) */
+/* Container de Resultado */
 #result-container {
-    width: 80%;
-    max-width: 600px;
-    margin: 30px auto;
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 650px;
+    margin: 40px auto;
+    background: #121212;
+    padding: 25px;
+    border-radius: 15px;
     border: 1px solid #3bce67;
-    box-sizing: border-box;
 }
 
 #output-css {
-    color: #dcdcdc;
-    font-family: 'Courier New', Courier, monospace;
-    white-space: pre-wrap;
-    background: #2d2d2d;
-    padding: 15px;
-    border-radius: 5px;
-    text-align: left; /* Código fica melhor alinhado à esquerda */
-}
-
-.copy-btn {
-    background-color: #3bce67;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-
-}
-
-
+    color: #a7ffc1;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9rem
 
 
 

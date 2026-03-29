@@ -1,19 +1,20 @@
-const btnGerar = document.querySelector('.button');
+const btnGerar = document.getElementById('btn-gerar');
 const inputText = document.querySelector('#input-text');
 
-// ⚠️ Mantenha sua chave aqui
-const API_KEY = "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
-"; 
+// ⚠️ SUBSTITUA POR UMA CHAVE NOVA E NÃO COMPARTILHE
+const API_KEY = "SUA_NOVA_CHAVE_AQUI"; 
 
 btnGerar.addEventListener('click', async () => {
-    const prompt = inputText.value;
+    const prompt = inputText.value.trim();
 
     if (!prompt) {
         alert("Por favor, descreva o que você imagina!");
         return;
     }
 
+    // Feedback visual e trava de segurança
     btnGerar.innerText = "Gerando...";
+    btnGerar.disabled = true;
 
     try {
         const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -26,8 +27,7 @@ btnGerar.addEventListener('click', async () => {
                 messages: [
                     {
                         role: "system",
-                        // MUDANÇA AQUI: Instrução forçada para a IA usar sempre a mesma classe
-                        content: "Você é um especialista em CSS. Gere código apenas para a classe chamada '.element-to-style'. Responda apenas com o código CSS, sem explicações ou markdown (sem aspas ou blocos de código)."
+                        content: "Você é um especialista em CSS. Gere código apenas para a classe chamada '.element-to-style'. Responda APENAS com o código CSS puro, sem explicações, sem aspas e sem blocos de código markdown (```)."
                     },
                     {
                         role: "user",
@@ -41,16 +41,20 @@ btnGerar.addEventListener('click', async () => {
         if (!response.ok) throw new Error(`Erro na API: ${response.status}`);
 
         const data = await response.json();
-        const codigoGerado = data.choices[0].message.content;
+        let codigoGerado = data.choices[0].message.content;
+
+        // Limpeza de segurança caso a IA envie markdown (```css)
+        codigoGerado = codigoGerado.replace(/```css|```/g, "").trim();
 
         // 1. Mostrar o texto no container
         const resultContainer = document.querySelector('#result-container');
         const outputCss = document.querySelector('#output-css');
+        
         outputCss.innerText = codigoGerado;
         resultContainer.style.display = 'block';
 
-        // 2. Aplicar o CSS no Preview (Agora dentro do try!)
-        let styleTag = document.querySelector('#dynamic-styles');
+        // 2. Aplicar o CSS no Preview
+        let styleTag = document.getElementById('dynamic-styles');
         if (!styleTag) {
             styleTag = document.createElement('style');
             styleTag.id = 'dynamic-styles';
@@ -58,12 +62,14 @@ btnGerar.addEventListener('click', async () => {
         }
         styleTag.innerHTML = codigoGerado;
 
+        // Rolagem suave
         resultContainer.scrollIntoView({ behavior: 'smooth' });
 
     } catch (error) {
         console.error("Erro:", error);
-        alert("Ops! Verifique sua conexão ou chave de API.");
+        alert("Ops! Verifique sua conexão ou se a chave de API ainda é válida.");
     } finally {
         btnGerar.innerText = "Gerar Código";
+        btnGerar.disabled = false;
     }
 });

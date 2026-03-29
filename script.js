@@ -2,7 +2,7 @@ const btnGerar = document.getElementById('btn-gerar');
 const inputText = document.querySelector('#input-text');
 
 // ⚠️ SUBSTITUA POR UMA CHAVE NOVA E NÃO COMPARTILHE
-const API_KEY = "SUA_NOVA_CHAVE_AQUI"; 
+const API_KEY = "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";
 
 btnGerar.addEventListener('click', async () => {
     const prompt = inputText.value.trim();
